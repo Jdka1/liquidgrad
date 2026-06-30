@@ -1,8 +1,25 @@
-import liquidgrad.liquid_layer
+import liquidgrad.layers as layers
+import numpy as np
 
-liquid_net = liquidgrad.liquid_layer.LiquidLayer(
-    n_neurons=5,
-    speed=0.5,
+print("\n" * 5)
+
+
+liquid = layers.Liquid(
+    n_neurons=5
 )
 
-print(liquid_net.state)
+
+x = np.array([1,2,3,4,5])
+print(x.shape)
+
+print(liquid.state)
+for i in range(100):
+    liquid.think(x)
+print(liquid.state)
+
+
+
+print(liquid)
+
+
+
