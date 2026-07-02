@@ -1,25 +1,18 @@
-import liquidgrad.layers as layers
+from liquidgrad import Tensor
+from liquidgrad.optim import SGD
+from liquidgrad.layers import LinearFF
 import numpy as np
 
-print("\n" * 5)
 
 
-liquid = layers.Liquid(
-    n_neurons=5
-)
+layer = LinearFF(1,1)
+optimizer = SGD(layer.parameters(), lr=0.1)
 
+layer.W.grad += 1.0
+layer.b.grad += 1.0
 
-x = np.array([1,2,3,4,5])
-print(x.shape)
+print(layer.W.data, layer.b.data)
 
-print(liquid.state)
-for i in range(100):
-    liquid.think(x)
-print(liquid.state)
+optimizer.step()
 
-
-
-print(liquid)
-
-
-
+print(layer.W.data, layer.b.data)
