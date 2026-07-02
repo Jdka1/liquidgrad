@@ -23,9 +23,10 @@ class LinearFF:
     def parameters(self) -> list[Parameter]:
         return [self.W, self.b]
 
-    def forward(self, x: Tensor):
+    def forward(self, x: Tensor) -> Tensor:
         pre = x.data @ self.W.data + self.b.data
-        return pre if self.activation is None else self.activation(pre)
+        out = pre if self.activation is None else self.activation(pre)
+        return Tensor(out)
     
     def __repr__(self) -> str:
         act = self.activation.__name__ if self.activation else "linear"
