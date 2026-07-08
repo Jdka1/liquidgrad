@@ -1,2 +1,2 @@
 # liquidgrad 🌊
-Building an LNN framework from scratch...
+Building an LNN framework from scratch.
